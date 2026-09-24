@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f7f2" />
+    <title>Studio Flow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#ana-sayfa" aria-label="Studio Flow ana sayfa">
+          <span class="brand-mark">S</span><span>Studio Flow</span>
+        </a>
+        <p class="welcome">İçeriklerin, tek ve sade bir yerde.</p>
+      </header>
+
+      <section class="hero" id="ana-sayfa">
+        <div>
+          <p class="eyebrow">İÇERİK STÜDYON</p>
+          <h1>Bugün ne<br />oluşturuyoruz?</h1>
+          <p class="hero-copy">Fikrinden yayın gününe kadar tüm içeriklerini kolayca planla.</p>
+        </div>
+        <a class="hero-action" href="#yeni-icerik"><span>＋</span> Yeni içerik</a>
+      </section>
+
+      <nav class="quick-nav" aria-label="Hızlı bölümler">
+        <a href="#yeni-icerik">Yeni içerik</a>
+        <a href="#projelerim">Projelerim</a>
+        <a href="#fikirler">İçerik fikri</a>
+        <a href="#senaryo">Reels senaryosu</a>
+        <a href="#takvim">İçerik takvimi</a>
+      </nav>
+
+      <section class="section create-section" id="yeni-icerik">
+        <div class="section-heading">
+          <div><p class="eyebrow">YENİ İÇERİK</p><h2>Hızlıca ekle</h2></div>
+          <p>Temel bilgileri doldur, gerisini sonra da düzenleyebilirsin.</p>
+        </div>
+        <form id="content-form" class="content-form">
+          <label>Proje adı<input id="project-name" name="projectName" placeholder="Örn. Yaz koleksiyonu" required /></label>
+          <label>Ürün / marka<input id="brand" name="brand" placeholder="Örn. Luma Studio" required /></label>
+          <label>İçerik türü<select id="content-type" name="contentType"><option>Reels</option><option>Görsel</option><option>UCS</option><option>Animasyon</option></select></label>
+          <label>Kısa açıklama<textarea id="description" name="description" placeholder="Bu içerikte ne anlatacaksın?" rows="2" required></textarea></label>
+          <label>Tarih<input id="content-date" name="date" type="date" required /></label>
+          <button class="primary-button" type="submit">Kaydet <span>→</span></button>
+        </form>
+      </section>
+
+      <section class="section projects-section" id="projelerim">
+        <div class="section-heading"><div><p class="eyebrow">PROJELERİM</p><h2>Oluşturduğun projeler</h2></div><p>Bir projeye dokunarak içeriklerini gör.</p></div>
+        <div id="project-list" class="project-list" aria-live="polite"></div>
+      </section>
+
+      <section class="tools-grid">
+        <article class="tool-card idea-card" id="fikirler">
+          <p class="eyebrow">İÇERİK FİKRİ</p><h2>Yeni bir kıvılcım bul</h2>
+          <p class="tool-copy">Seçtiğin proje için yaratıcı, uygulanabilir içerik fikirleri hazırla.</p>
+          <label class="select-label">Proje seç<select id="idea-project"></select></label>
+          <label class="prompt-label">Aklındaki konu<textarea id="idea-prompt" rows="2" placeholder="Örn. yeni ürünün ilk kullanımı"></textarea></label>
+          <button id="generate-idea" class="secondary-button" type="button">Fikir oluştur <span>✦</span></button>
+          <div id="idea-result" class="result-box" hidden></div>
+        </article>
+        <article class="tool-card script-card" id="senaryo">
+          <p class="eyebrow">REELS SENARYOSU</p><h2>Sahneleri sıraya koy</h2>
+          <p class="tool-copy">Kısa, anlaşılır bir reels akışı ile çekime hemen başla.</p>
+          <label class="select-label">Proje seç<select id="script-project"></select></label>
+          <label class="prompt-label">Reels konusu<textarea id="script-prompt" rows="2" placeholder="Örn. ürünle güne başlama rutini"></textarea></label>
+          <button id="generate-script" class="secondary-button" type="button">Senaryo oluştur <span>→</span></button>
+          <div id="script-result" class="result-box" hidden></div>
+        </article>
+      </section>
+
+      <section class="section calendar-section" id="takvim">
+        <div class="section-heading"><div><p class="eyebrow">İÇERİK TAKVİMİ</p><h2>Yaklaşan içeriklerin</h2></div><p>Oluşturduğun içerikler, tarih sırasıyla burada.</p></div>
+        <div id="calendar-list" class="calendar-list"></div>
+      </section>
+    </main>
+    <dialog id="project-dialog" class="project-dialog">
+      <div class="dialog-top"><div><p class="eyebrow">PROJE DETAYI</p><h2 id="dialog-title"></h2></div><button id="close-dialog" class="close-button" aria-label="Kapat">×</button></div>
+      <p id="dialog-brand" class="dialog-brand"></p><div id="dialog-content" class="dialog-content"></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
